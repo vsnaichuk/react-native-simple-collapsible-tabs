@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { StyleSheet, View, Text } from 'react-native';
 import { multiply } from 'react-native-simple-collapsible-tabs';
@@ -11,9 +12,11 @@ export default function App() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+        <Text>Result: {result}</Text>
+      </View>
+    </NavigationContainer>
   );
 }
 
