@@ -1,0 +1,23 @@
+{
+  "name": "react-native-simple-collapsible-tabs-example",
+  "displayName": "SimpleCollapsibleTabs Example",
+  "expo": {
+    "name": "react-native-simple-collapsible-tabs-example",
+    "slug": "react-native-simple-collapsible-tabs-example",
+    "description": "Example app for react-native-simple-collapsible-tabs",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
