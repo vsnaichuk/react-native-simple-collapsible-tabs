@@ -2,14 +2,9 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-simple-collapsible-tabs';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const [result] = React.useState<number | undefined>();
 
   return (
     <NavigationContainer>
