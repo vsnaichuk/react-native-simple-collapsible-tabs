@@ -1,29 +1,37 @@
 import * as React from 'react';
+import { Platform, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { CollapsibleTab } from 'react-native-simple-collapsible-tabs'
+import { Header, List, TabBar } from './components';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import { StyleSheet, View, Text } from 'react-native';
+const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
-  const [result] = React.useState<number | undefined>();
-
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Text>Result: {result}</Text>
-      </View>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <CollapsibleTab.Container>
+            <Header />
+            <Tab.Navigator
+              tabBar={(props) => <TabBar {...props} />}
+              initialRouteName="Example1"
+            >
+              <Tab.Screen name="Example1" component={List} />
+              <Tab.Screen name="Example2" component={List} />
+              <Tab.Screen name="Example3" component={List} />
+            </Tab.Navigator>
+          </CollapsibleTab.Container>
+        </SafeAreaView>
+      </SafeAreaProvider>
     </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    height: Platform.OS === 'web' ? '100vh' : '100%'
   },
 });
