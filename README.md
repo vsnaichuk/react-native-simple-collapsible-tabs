@@ -11,9 +11,11 @@ npm install react-native-simple-collapsible-tabs
 ## Usage
 
 ```js
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { CollapsibleTab } from "react-native-simple-collapsible-tabs";
 import { Header, TabBar } from "./components";
 
+const Tab = createMaterialTopTabNavigator();
 
 <CollapsibleTab.Container>
   <Header />
