@@ -11,11 +11,21 @@ npm install react-native-simple-collapsible-tabs
 ## Usage
 
 ```js
-import { multiply } from "react-native-simple-collapsible-tabs";
+import { CollapsibleTab } from "react-native-simple-collapsible-tabs";
+import { Header, TabBar } from "./components";
 
-// ...
 
-const result = await multiply(3, 7);
+<CollapsibleTab.Container>
+  <Header />
+  <Tab.Navigator
+    tabBar={(props) => <TabBar {...props} />}
+    initialRouteName="Example1"
+  >
+    <Tab.Screen name="Example1" component={List} />
+    <Tab.Screen name="Example2" component={List} />
+    <Tab.Screen name="Example3" component={List} />
+  </Tab.Navigator>
+</CollapsibleTab.Container>
 ```
 
 ## Contributing
