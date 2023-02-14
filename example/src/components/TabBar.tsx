@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, useWindowDimensions, StyleSheet } from 'react-native';
 import { Ionicons, Feather, FontAwesome } from '@expo/vector-icons';
-import Animated, { interpolate } from 'react-native-reanimated';
+import Animated, { interpolateNode } from 'react-native-reanimated';
 import type { MaterialTopTabBarProps } from '@react-navigation/material-top-tabs';
 import { CollapsibleTab } from 'react-native-simple-collapsible-tabs';
 
@@ -74,11 +74,10 @@ export function TabBar({ state, navigation }: MaterialTopTabBarProps) {
   const { width } = useWindowDimensions();
   const tabButtonWidth = width / state.routeNames.length;
 
-  const translateX = interpolate(
-    state.index,
-    [0, 1, 2],
-    [0, tabButtonWidth, 2 * tabButtonWidth]
-  );
+  const translateX = interpolateNode(state.index, {
+    inputRange: [0, 1, 2],
+    outputRange: [0, tabButtonWidth, 2 * tabButtonWidth],
+  });
 
   return (
     <CollapsibleTab.TabBar>
@@ -92,11 +91,11 @@ export function TabBar({ state, navigation }: MaterialTopTabBarProps) {
         {state.routes.map(({ key, name }, index) => {
           const inputRange = state.routes.map((_, i) => i);
 
-          const opacity = interpolate(
-            state.index,
+
+          const opacity = interpolateNode(state.index, {
             inputRange,
-            inputRange.map((i) => (i === index ? 1 : 0.7))
-          );
+            outputRange: inputRange.map((i) => (i === index ? 1 : 0.7)),
+          });
 
           const isActive = index === state.index;
 
