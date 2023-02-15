@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useIsFocused } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 
@@ -47,7 +47,14 @@ const DATA = [
 
 
 export function List() {
+  const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused();
+
+  async function onRefresh() {
+    setRefreshing(true);
+    await new Promise((res) => setTimeout(res, 2000));
+    setRefreshing(false);
+  }
 
   return (
     <CollapsibleTab.FlatList
@@ -58,6 +65,8 @@ export function List() {
       numColumns={1}
       removeClippedSubviews={true}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
+      refreshing={refreshing}
+      onRefresh={onRefresh}
       renderItem={() => (
         <View
           style={{
