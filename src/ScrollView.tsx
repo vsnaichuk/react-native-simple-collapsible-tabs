@@ -61,8 +61,6 @@ export function ScrollView(props: ICollapsibleTabScrollViewProps) {
 
   return (
     <AnimatedScrollView
-      bounces={false}
-      overScrollMode="never"
       {...props}
       contentContainerStyle={[
         styles.contentContainerStyle,

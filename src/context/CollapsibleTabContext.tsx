@@ -172,6 +172,7 @@ export function CollapsibleTabProvider({
 
         runOnJS(stateScrollPositions)(id, event.contentOffset);
       },
+      onEndDrag: () => runOnJS(fixScrolls)(id),
       onMomentumEnd: () => runOnJS(fixScrolls)(id),
     });
 
