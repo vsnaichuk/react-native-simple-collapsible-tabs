@@ -1,10 +1,10 @@
-import * as React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { CollapsibleTab } from 'react-native-simple-collapsible-tabs'
+import { CollapsibleTab } from 'react-native-simple-collapsible-tabs';
 import { Header, List, TabBar } from './components';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import React from 'react';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -32,6 +32,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    height: Platform.OS === 'web' ? '100vh' : '100%'
+    height: Platform.OS === 'web' ? '100vh' : '100%',
   },
 });

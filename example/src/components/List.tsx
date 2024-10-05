@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
 import { useIsFocused } from '@react-navigation/native';
-import { View, StyleSheet } from 'react-native';
-
-import {
-  CollapsibleTab,
-} from 'react-native-simple-collapsible-tabs';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { CollapsibleTab } from 'react-native-simple-collapsible-tabs';
 
 const DATA = [
   {
@@ -43,8 +40,19 @@ const DATA = [
     name: 'Edd Harmson',
     value: 49.53,
   },
+  {
+    name: 'Lacey Arrol',
+    value: 31.9,
+  },
+  {
+    name: 'Jeno Pykett',
+    value: 54.39,
+  },
+  {
+    name: 'Julina Maunders',
+    value: 92.77,
+  },
 ];
-
 
 export function List() {
   const [refreshing, setRefreshing] = useState(false);
@@ -67,14 +75,11 @@ export function List() {
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       refreshing={refreshing}
       onRefresh={onRefresh}
-      renderItem={() => (
-        <View
-          style={{
-            width: 400,
-            height: 400,
-            backgroundColor: 'lightgreen',
-          }}
-        />
+      renderItem={({ item }) => (
+        <View style={styles.itemContainer}>
+          <Text style={styles.itemName}>{item.name}</Text>
+          <Text style={styles.itemValue}>{item.value.toFixed(2)}</Text>
+        </View>
       )}
     />
   );
@@ -82,11 +87,36 @@ export function List() {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    flexGrow: 1,
-    paddingHorizontal: 1,
-    paddingBottom: 2,
+    padding: 16,
+    marginTop: 16,
+    paddingBottom: 40,
+    backgroundColor: '#f8f9fa',
   },
   separator: {
-    paddingTop: 16
-  }
+    height: 1,
+    backgroundColor: '#e9ecef',
+    marginVertical: 8,
+  },
+  itemContainer: {
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: '#ffffff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+  itemName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#343a40',
+  },
+  itemValue: {
+    fontSize: 16,
+    color: '#495057',
+  },
 });

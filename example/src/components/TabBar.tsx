@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   optionBarBlueButton: {
-    backgroundColor: '#3A98F1',
     borderWidth: 0,
   },
   optionBarButtonText: {
@@ -65,8 +64,8 @@ const styles = StyleSheet.create({
 });
 
 const icons: { [name: string]: JSX.Element } = {
-  Example1: <Ionicons style={styles.tabBarButtonIcon} name="grid-outline" />,
-  Example2: <Feather style={styles.tabBarButtonIcon} name="camera" />,
+  Example1: <Feather style={styles.tabBarButtonIcon} name="menu" />,
+  Example2: <Ionicons style={styles.tabBarButtonIcon} name="grid-outline" />,
   Example3: <FontAwesome style={styles.tabBarButtonIcon} name="user-o" />,
 };
 
@@ -90,7 +89,6 @@ export function TabBar({ state, navigation }: MaterialTopTabBarProps) {
         />
         {state.routes.map(({ key, name }, index) => {
           const inputRange = state.routes.map((_, i) => i);
-
 
           const opacity = interpolateNode(state.index, {
             inputRange,
